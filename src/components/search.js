@@ -14,15 +14,15 @@ import api from '../utils';
 export default function Search() {
   const classes = useStyles();
   const [state, setState] = React.useState({
+    type: 'multi',
     search: '',
-    select: 'multi',
   });
-  // eslint-disable-next-line no-unused-vars
-  const [autocomplete, setAuto] = React.useState(null);
 
-  const handleChange = (event) => {
+  const [open, setOpen] = React.useState(false);
+  const [options, setOptions] = React.useState([]);
+
+  const handleChange = async (event) => {
     const { name } = event.target;
-    console.log(name)
     setState({
       ...state,
       [name]: event.target.value,
@@ -30,15 +30,12 @@ export default function Search() {
   };
 
   const handleQueryChange = (event) => {
-    const { search } = event.target;
-    console.log(search)
-    // console.log(event.target.value)
-    console.log('before ', state)
+    const { name } = event.target;
     setState({
       ...state,
-      [search]: event.target.value,
+      [name]: event.target.value,
     });
-    console.log('after ', state)
+
     if (event.target.value.length >= 5) {
       let active = true;
 
@@ -55,8 +52,6 @@ export default function Search() {
     }
   };
 
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
 
   React.useEffect(() => {
@@ -64,12 +59,6 @@ export default function Search() {
       setOptions([]);
     }
   }, [open]);
-
-  const handleAutocomplete = (event, newValue) => {
-    if (newValue != null) {
-      setAuto(newValue);
-    }
-  };
 
   return (
     <div className={classes.root}>
@@ -79,11 +68,12 @@ export default function Search() {
           Welcome.
         </Typography>
         <Typography className={classes.searchEngineSubTitle}>Millions of movies, TV shows and people to discover.</Typography>
-        <form className={classes.form} noValidate action='/results'>
+        <form className={classes.form} action='/results'>
           <Grid container spacing={1}>
             <Grid item xs={12} sm={7} md={6}>
               <Autocomplete
                 clearOnEscape
+                clearOnBlur={false}
                 id="search"
                 fullWidth
                 open={open}
@@ -110,7 +100,7 @@ export default function Search() {
                       break;
                   }
                   window.location.href = url;
-                  // return option.id === value.id
+                  return option.id === value.id
                 }}
                 getOptionLabel={(option) => {
                   const res = option.media_type === 'movie' ? option.title : option.name;
@@ -118,16 +108,14 @@ export default function Search() {
                 }}
                 options={options}
                 loading={loading}
-                onChange={handleAutocomplete}
                 renderInput={(params) => (
                   <TextField
-                    /* eslint-disable react/jsx-props-no-spreading */
                     {...params}
+                    required
                     label="Search for a movie, tv show or a person"
                     autoFocus
                     variant="outlined"
                     onChange={handleQueryChange}
-                    value={state.undefined || ''}
                     InputProps={{
                       ...params.InputProps,
                       name: 'search',
@@ -194,7 +182,10 @@ export default function Search() {
           </Grid>
         </form>
         <Typography className={classes.searchEngineText}>
-          Popular: <Link href="/category" className={classes.searchEngineLink}>Ryan Reynolds</Link>, <Link href="/category" className={classes.searchEngineLink}>The Mandalorian</Link>, <Link href="/category" className={classes.searchEngineLink}>Wonder Woman 1984</Link>
+          Popular:&nbsp;
+          <Link href="/details/person/10859" className={classes.searchEngineLink}>Ryan Reynolds</Link>,&nbsp;
+          <Link href="/details/tv/82856" className={classes.searchEngineLink}>The Mandalorian</Link>,&nbsp;
+          <Link href="/details/movie/464052" className={classes.searchEngineLink}>Wonder Woman 1984</Link>
         </Typography>
       </Container>
     </div>
