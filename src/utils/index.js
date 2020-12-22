@@ -11,8 +11,9 @@ class Api {
       console.error('"id" is a required property');
       return;
     }
+    const amendment = itemType === 'person' ? 'combined_credits' : 'credits';
     return axios
-      .get(`${this.url}/${itemType}/${itemId}${this.apiKey}`)
+      .get(`${this.url}/${itemType}/${itemId}?${this.apiKey}&language=en-US&append_to_response=${amendment}`)
       .then(function (response) {
         return response.data;
       })
@@ -33,8 +34,8 @@ class Api {
       })
   }
 
-  getImage(imgPath, width = 185) {
-    return `//image.tmdb.org/t/p/w${width}${imgPath}`
+  getImage(imgPath, width = 300) {
+    return imgPath.startsWith('http') ? imgPath : `//image.tmdb.org/t/p/w${width}${imgPath}`;
   }
 }
 

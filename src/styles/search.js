@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 export const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
-    backgroundColor: '#f8f8f9',
     paddingTop: theme.spacing(12),
     paddingBottom: theme.spacing(12),
     [theme.breakpoints.down('md')]: {
@@ -26,14 +25,14 @@ export const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     cursor: 'pointer',
     '&:hover': {
-      color: '#2D7AF1',
+      // color: '#2D7AF1',
     },
   },
   searchEngineTitle: {
     fontWeight: 500,
     fontSize: '2.775em',
     lineHeight: '1.2em',
-    color: '#111637',
+    // color: '#111637',
     paddingBottom: theme.spacing(1),
     [theme.breakpoints.down('md')]: {
       fontSize: '2.2em',
@@ -43,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: '1.4em',
     lineHeight: '1.2em',
-    color: '#6c7091',
+    // color: '#6c7091',
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(4),
     [theme.breakpoints.down('md')]: {
@@ -54,18 +53,18 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: '1em',
     lineHeight: '1.2em',
-    color: '#6c7091',
+    // color: '#6c7091',
     paddingTop: theme.spacing(2),
   },
   searchEngineLink: {
     fontWeight: 500,
     fontSize: '1em',
     lineHeight: '1.2em',
-    color: '#6c7091',
+    // color: '#6c7091',
     paddingTop: theme.spacing(2),
     textDecoration: 'none',
     '&:hover': {
-      color: '#2D7AF1',
+      // color: '#2D7AF1',
       textDecoration: 'underline',
     },
   },

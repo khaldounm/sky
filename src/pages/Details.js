@@ -1,32 +1,31 @@
 import React from 'react';
 import Layout from '../components/layout';
-import ResultsBody from '../components/resultsBody';
+import DetailsBody from '../components/detailsBody';
+import Related from '../components/related';
 import CircularIndeterminate from '../components/spinner';
 import api from '../utils';
 
-class Results extends React.Component {
+class Details extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       items: [],
       isLoaded: false,
+      type: '',
     }
   }
 
   componentDidMount() {
-    const { search } = window.location;
-    const query = new URLSearchParams(search);
-    const searchQuery = query.get('search');
-    const searchType = query.get('type');
-    api.search(searchType, searchQuery)
+    const paths = window.location.pathname.split('/');
+    api.getDetails({ itemType: paths[2], itemId: paths[3] })
       .then(data => {
         this.setState({
-          items: data.results,
-          type: searchType,
+          items: data,
+          type: paths[2],
           isLoaded: true,
         })
-      })
+      }).catch(err => console.log(err))
   }
 
   render() {
@@ -40,10 +39,11 @@ class Results extends React.Component {
     }
     return (
       <Layout>
-        <ResultsBody data={{items}} type={type} />
+        <DetailsBody details={items} type={type} />
+        <Related details={items} type={type} />
       </Layout>
     );
   }
 }
 
-export default Results;
+export default Details;

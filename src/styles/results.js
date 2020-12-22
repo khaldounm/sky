@@ -34,7 +34,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   paddingAll: {
-    padding: theme.spacing(2),
+    padding: 4,
   },
   paddingAllNoLeft: {
     padding: theme.spacing(2),
@@ -108,6 +108,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   marginLeft: {
     marginLeft: theme.spacing(2),
+  },
+  round: {
+    borderRadius: 100,
   },
   borderRight: {
     borderRight: '4px solid #E6E7EC',
@@ -211,6 +214,12 @@ export const useStyles = makeStyles((theme) => ({
   white: {
     color: '#ffffff !important',
   },
+  blackBG: {
+    backgroundColor: '#000000',
+  },
+  whiteBG: {
+    backgroundColor: '#ffffff',
+  },
   greenBlue: {
     color: '#ffffff',
     background: 'linear-gradient(to right, #0bfcdd, #6e10ff)',
@@ -238,7 +247,10 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     minHeight: 56,
     letterSpacing: 0.8,
-    marginTop: theme.spacing(4),
+    // marginTop: theme.spacing(4),
+    border: '1px solid #FF9E01',
+    borderRadius: 5,
+    padding: theme.spacing(2),
   },
   formControl: {
     minWidth: '100%',
@@ -311,7 +323,15 @@ export const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   updateImg: {
+    width: '70%',
+    borderRadius: 5,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
+  },
+  posterImg: {
     width: '100%',
+    borderRadius: 5,
   },
   cardPadding: {
     padding: theme.spacing(2),

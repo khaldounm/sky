@@ -5,6 +5,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import App from './App';
 import Results from './pages/Results';
+import Details from './pages/Details';
 import NoMatch from './pages/NoMatch';
 
 const themeX = createMuiTheme({
@@ -44,6 +45,7 @@ const routing = (
         <Switch>
           <Route exact path="/" component={App} />
           <Route path="/results" component={Results} />
+          <Route path="/details" component={Details} />
           <Route component={NoMatch} />
         </Switch>
       </MuiThemeProvider>
