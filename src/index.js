@@ -8,7 +8,7 @@ import Results from './pages/Results';
 import Details from './pages/Details';
 import NoMatch from './pages/NoMatch';
 
-const themeX = createMuiTheme({
+const theme = createMuiTheme({
   palette: {
     type: localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light',
     primary: {
@@ -19,9 +19,6 @@ const themeX = createMuiTheme({
       light: '#0066ff',
       main: '#0044ff',
       contrastText: '#ffcc00',
-    },
-    background: {
-      default: '#ffffff',
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,
@@ -40,7 +37,7 @@ const themeX = createMuiTheme({
 const routing = (
   <Router>
     <div>
-      <MuiThemeProvider theme={themeX}>
+      <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Switch>
           <Route exact path="/" component={App} />

@@ -13,7 +13,6 @@ export default function ResultsBody({ data, type }) {
           <Grid item xs={12}>
             <Typography className={classes.serviceTitle}>Search Results</Typography>
           </Grid>
-
           {data.items.map((result) => (
             <Grid item xs={12} className={classes.marginTopSM} key={result.id}>
               <Grid container spacing={4}>

@@ -277,27 +277,27 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: '1.4em',
     lineHeight: '1.6em',
-    color: '#111637',
+    // color: '#111637',
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.2em',
     },
   },
   serviceText: {
-    color: '#6C7091',
+    // color: '#6C7091',
     lineHeight: '2em',
     verticalAlign: 'middle',
   },
   serviceTextBlack: {
-    color: '#111637',
+    // color: '#111637',
     lineHeight: '2em',
     verticalAlign: 'middle',
   },
   leftPaneBlackText: {
-    color: '#111637',
+    // color: '#111637',
     fontSize: '1em',
   },
   leftPaneGreyText: {
-    color: '#6C7091',
+    // color: '#6C7091',
     fontSize: '0.9em',
   },
   serviceLink: {
