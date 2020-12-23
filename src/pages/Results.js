@@ -5,13 +5,12 @@ import CircularIndeterminate from '../components/spinner';
 import api from '../utils';
 
 class Results extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       items: [],
       isLoaded: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -20,17 +19,17 @@ class Results extends React.Component {
     const searchQuery = query.get('search');
     const searchType = query.get('type');
     api.search(searchType, searchQuery)
-      .then(data => {
+      .then((data) => {
         this.setState({
           items: data.results,
           type: searchType,
           isLoaded: true,
-        })
-      })
+        });
+      });
   }
 
   render() {
-    let { isLoaded, items, type } = this.state;
+    const { isLoaded, items, type } = this.state;
     if (!isLoaded) {
       return (
         <Layout>
@@ -40,7 +39,7 @@ class Results extends React.Component {
     }
     return (
       <Layout>
-        <ResultsBody data={{items}} type={type} />
+        <ResultsBody data={{ items }} type={type} />
       </Layout>
     );
   }

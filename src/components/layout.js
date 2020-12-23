@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import Header from './header';
 import Footer from './footer';
@@ -7,7 +9,7 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
-          {this.props.children}
+        {this.props.children}
         <Footer />
       </div>
     );

@@ -1,5 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { Container, Grid, Typography, Chip, Button, Divider } from '@material-ui/core';
+import {
+  Container, Grid, Typography, Chip, Button, Divider,
+} from '@material-ui/core';
 import { useStyles } from '../styles/results';
 import api from '../utils';
 
@@ -22,7 +25,7 @@ export default function ResultsBody({ data, type }) {
                 <Grid item xs={12} sm={9} md={9} lg={9}>
                   <Typography className={`${classes.serviceSubTitle} ${classes.bold}`}>{ result.title || result.name }</Typography>
                   <Typography className={`${classes.marginTopSM} ${classes.serviceTextBlack}`}>{ result.overview ? result.overview.substring(0, 558) : 'No overview available... Please follow the link below in order to see more details.' }</Typography>
-                  <Typography component={"span"} className={`${classes.leftPaneGreyText}`}>
+                  <Typography component="span" className={`${classes.leftPaneGreyText}`}>
                     <Chip
                       color="primary"
                       variant="outlined"

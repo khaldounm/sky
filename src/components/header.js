@@ -1,30 +1,19 @@
 import React from 'react';
 import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Link from '@material-ui/core/Link';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import MovieFilterIcon from '@material-ui/icons/MovieFilter';
 import MovieIcon from '@material-ui/icons/Movie';
 import PublicIcon from '@material-ui/icons/Public';
 import InfoIcon from '@material-ui/icons/Info';
-import Badge from '@material-ui/core/Badge';
-import { useStyles } from '../styles/drawer';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-
+import {
+  useTheme, Drawer, CssBaseline, AppBar, Toolbar, List, Link, Divider, IconButton, ListItem, ListItemIcon, ListItemText, Badge,
+} from '@material-ui/core';
+import { useStyles } from '../styles/drawer';
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
@@ -39,34 +28,34 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
-  const handleThemeSwitcher = () => {    
-    let theme = 'light';  
-    if(localStorage.getItem('theme')){
-      if(localStorage.getItem('theme') === 'light'){
-        theme = 'dark';
-      } else if(localStorage.getItem('theme') === 'dark'){
-        theme = 'light';
-      } 
+  const handleThemeSwitcher = () => {
+    let dynamicTheme = 'light';
+    if (localStorage.getItem('theme')) {
+      if (localStorage.getItem('theme') === 'light') {
+        dynamicTheme = 'dark';
+      } else if (localStorage.getItem('theme') === 'dark') {
+        dynamicTheme = 'light';
+      }
     } else {
-      theme = 'dark';
+      dynamicTheme = 'dark';
     }
-    localStorage.setItem('theme', theme);
-    window.location.reload();  
+    localStorage.setItem('theme', dynamicTheme);
+    window.location.reload();
   };
 
   const activeTheme = () => {
-    let theme = 'light';  
-    if(localStorage.getItem('theme')){
-      if(localStorage.getItem('theme') === 'light'){
-        theme = 'dark';
-      } else if(localStorage.getItem('theme') === 'dark'){
-        theme = 'light';
-      } 
+    let dynamicTheme = 'light';
+    if (localStorage.getItem('theme')) {
+      if (localStorage.getItem('theme') === 'light') {
+        dynamicTheme = 'dark';
+      } else if (localStorage.getItem('theme') === 'dark') {
+        dynamicTheme = 'light';
+      }
     } else {
-      theme = 'dark';
+      dynamicTheme = 'dark';
     }
-    return theme === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />;
-  }
+    return dynamicTheme === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />;
+  };
 
   return (
     <div className={classes.root}>
@@ -87,9 +76,9 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Link href={'/'}><img src="/logo.png" height={55} alt="logo" /></Link>
+          <Link href="/"><img src="/logo.png" className={classes.logo} alt="logo" /></Link>
           <section className={classes.rightToolbar}>
-            <IconButton color="inherit" edge="end" onClick={handleThemeSwitcher}>
+            <IconButton color="inherit" edge="end" onClick={handleThemeSwitcher} aria-label="theme-toggle">
               <Badge>
                 {activeTheme()}
               </Badge>
@@ -113,44 +102,44 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          <ListItem button key={'Home'}>
+          <ListItem button key="Home">
             <ListItemIcon><PublicIcon /></ListItemIcon>
-            <Link href="/" color={'textPrimary'} underline={'none'}><ListItemText primary={'Home'} /></Link>
+            <Link href="/" color="textPrimary" underline="none"><ListItemText primary="Home" /></Link>
           </ListItem>
-          <ListItem button key={'noMatch'}>
+          <ListItem button key="noMatch">
             <ListItemIcon><InfoIcon /></ListItemIcon>
-            <Link href="/any-other-page" color={'textPrimary'} underline={'none'}><ListItemText primary={'404'} /></Link>
+            <Link href="/any-other-page" color="textPrimary" underline="none"><ListItemText primary="404" /></Link>
           </ListItem>
         </List>
         <Divider />
         <List>
-          <ListItem button key={'Ryan Reynolds'}>
+          <ListItem button key="Ryan Reynolds">
             <ListItemIcon><AccountCircleIcon /></ListItemIcon>
-            <Link href="/details/person/10859" color={'textSecondary'} underline={'none'}><ListItemText primary={'Ryan Reynolds'} /></Link>
+            <Link href="/details/person/10859" color="textSecondary" underline="none"><ListItemText primary="Ryan Reynolds" /></Link>
           </ListItem>
-          <ListItem button key={'Peter Dinklage'}>
+          <ListItem button key="Peter Dinklage">
             <ListItemIcon><AccountCircleIcon /></ListItemIcon>
-            <Link href="/details/person/22970" color={'textSecondary'} underline={'none'}><ListItemText primary={'Peter Dinklage'} /></Link>
+            <Link href="/details/person/22970" color="textSecondary" underline="none"><ListItemText primary="Peter Dinklage" /></Link>
           </ListItem>
-          <ListItem button key={'The Walking Dead'}>
+          <ListItem button key="The Walking Dead">
             <ListItemIcon><MovieFilterIcon /></ListItemIcon>
-            <Link href="/details/tv/1402" color={'textSecondary'} underline={'none'}><ListItemText primary={'The Walking Dead'} /></Link>
+            <Link href="/details/tv/1402" color="textSecondary" underline="none"><ListItemText primary="The Walking Dead" /></Link>
           </ListItem>
-          <ListItem button key={'Avengers: Endgame'}>
+          <ListItem button key="Avengers: Endgame">
             <ListItemIcon><MovieIcon /></ListItemIcon>
-            <Link href="/details/movie/299534" color={'textSecondary'} underline={'none'}><ListItemText primary={'Avengers: Endgame'} /></Link>
+            <Link href="/details/movie/299534" color="textSecondary" underline="none"><ListItemText primary="Avengers: Endgame" /></Link>
           </ListItem>
-          <ListItem button key={'The Mandalorian'}>
+          <ListItem button key="The Mandalorian">
             <ListItemIcon><MovieFilterIcon /></ListItemIcon>
-            <Link href="/details/tv/82856" color={'textSecondary'} underline={'none'}><ListItemText primary={'The Mandalorian'} /></Link>
+            <Link href="/details/tv/82856" color="textSecondary" underline="none"><ListItemText primary="The Mandalorian" /></Link>
           </ListItem>
-          <ListItem button key={'Wonder Woman'}>
+          <ListItem button key="Wonder Woman">
             <ListItemIcon><MovieIcon /></ListItemIcon>
-            <Link href="/details/movie/297762" color={'textSecondary'} underline={'none'}><ListItemText primary={'Wonder Woman'} /></Link>
+            <Link href="/details/movie/297762" color="textSecondary" underline="none"><ListItemText primary="Wonder Woman" /></Link>
           </ListItem>
-          <ListItem button key={'The Boys'}>
+          <ListItem button key="The Boys">
             <ListItemIcon><MovieFilterIcon /></ListItemIcon>
-            <Link href="/details/tv/76479" color={'textSecondary'} underline={'none'}><ListItemText primary={'The Boys'} /></Link>
+            <Link href="/details/tv/76479" color="textSecondary" underline="none"><ListItemText primary="The Boys" /></Link>
           </ListItem>
         </List>
       </Drawer>

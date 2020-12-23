@@ -12,13 +12,13 @@ const theme = createMuiTheme({
   palette: {
     type: localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light',
     primary: {
-      light: '#2D7AF1',
-      main: '#FF9E00',
+      light: '#e36e00',
+      main: '#ff9e00',
     },
     secondary: {
-      light: '#0066ff',
-      main: '#0044ff',
-      contrastText: '#ffcc00',
+      light: '#964600',
+      main: '#ff9e00',
+      contrastText: '#ff9e00',
     },
     contrastThreshold: 3,
     tonalOffset: 0.2,

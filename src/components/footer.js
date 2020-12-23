@@ -7,9 +7,10 @@ export default function Copyright() {
       {'Copyright © '}
       <Link color="inherit" href="http://35.197.206.58/">
         Sky
-        </Link>{' '}
+      </Link>
+      {' '}
       {new Date().getFullYear()}
-      {'.'}
+      .
     </Typography>
   );
 }

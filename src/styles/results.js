@@ -247,7 +247,6 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: 16,
     minHeight: 56,
     letterSpacing: 0.8,
-    // marginTop: theme.spacing(4),
     border: '1px solid #FF9E01',
     borderRadius: 5,
     padding: theme.spacing(2),
@@ -268,7 +267,6 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: '2.775em',
     lineHeight: '1.2em',
-    color: '#111637',
     [theme.breakpoints.down('md')]: {
       fontSize: '2.0em',
     },
@@ -277,27 +275,22 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     fontSize: '1.4em',
     lineHeight: '1.6em',
-    // color: '#111637',
     [theme.breakpoints.down('sm')]: {
       fontSize: '1.2em',
     },
   },
   serviceText: {
-    // color: '#6C7091',
     lineHeight: '2em',
     verticalAlign: 'middle',
   },
   serviceTextBlack: {
-    // color: '#111637',
     lineHeight: '2em',
     verticalAlign: 'middle',
   },
   leftPaneBlackText: {
-    // color: '#111637',
     fontSize: '1em',
   },
   leftPaneGreyText: {
-    // color: '#6C7091',
     fontSize: '0.9em',
   },
   serviceLink: {

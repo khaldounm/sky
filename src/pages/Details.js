@@ -6,30 +6,31 @@ import CircularIndeterminate from '../components/spinner';
 import api from '../utils';
 
 class Details extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       items: [],
       isLoaded: false,
       type: '',
-    }
+    };
   }
 
   componentDidMount() {
     const paths = window.location.pathname.split('/');
     api.getDetails({ itemType: paths[2], itemId: paths[3] })
-      .then(data => {
+      .then((data) => {
         this.setState({
           items: data,
           type: paths[2],
           isLoaded: true,
-        })
-      }).catch(err => console.log(err))
+        });
+      }).catch((err) => {
+        throw new Error(err);
+      });
   }
 
   render() {
-    let { isLoaded, items, type } = this.state;
+    const { isLoaded, items, type } = this.state;
     if (!isLoaded) {
       return (
         <Layout>

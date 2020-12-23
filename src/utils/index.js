@@ -8,32 +8,28 @@ class Api {
 
   getDetails({ itemType, itemId }) {
     if (!itemType || !itemId) {
-      console.error('"id" is a required property');
-      return;
+      throw new Error('"id" is a required property');
     }
     const amendment = itemType === 'person' ? 'combined_credits' : 'credits';
     return axios
       .get(`${this.url}/${itemType}/${itemId}?${this.apiKey}&language=en-US&append_to_response=${amendment}`)
-      .then(function (response) {
-        return response.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+      .then((response) => response.data)
+      .catch((error) => {
+        throw new Error(error);
+      });
   }
 
   search(searchType, searchQuery) {
-    searchQuery = encodeURI(searchQuery);
+    const encodedSearchQuery = encodeURI(searchQuery);
     return axios
-      .get(`${this.url}/search/${searchType}?${this.apiKey}&language=en-US&query=${searchQuery}&page=1&include_adult=false`)
-      .then(function (response) {
-        return response.data;
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+      .get(`${this.url}/search/${searchType}?${this.apiKey}&language=en-US&query=${encodedSearchQuery}&page=1&include_adult=false`)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw new Error(error);
+      });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   getImage(imgPath, width = 300) {
     return imgPath.startsWith('http') ? imgPath : `//image.tmdb.org/t/p/w${width}${imgPath}`;
   }

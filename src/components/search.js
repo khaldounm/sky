@@ -20,6 +20,7 @@ export default function Search() {
 
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
+  const loading = open && options.length === 0;
 
   const handleChange = async (event) => {
     const { name } = event.target;
@@ -29,6 +30,7 @@ export default function Search() {
     });
   };
 
+  // eslint-disable-next-line consistent-return
   const handleQueryChange = (event) => {
     const { name } = event.target;
     setState({
@@ -52,7 +54,11 @@ export default function Search() {
     }
   };
 
-  const loading = open && options.length === 0;
+  // eslint-disable-next-line no-unused-vars
+  const redirect = (url) => {
+    // eslint-disable-next-line no-console
+    console.log(window.location.href, url);
+  };
 
   React.useEffect(() => {
     if (!open) {
@@ -68,7 +74,7 @@ export default function Search() {
           Welcome.
         </Typography>
         <Typography className={classes.searchEngineSubTitle}>Millions of movies, TV shows and people to discover.</Typography>
-        <form className={classes.form} action='/results'>
+        <form className={classes.form} action="/results">
           <Grid container spacing={1}>
             <Grid item xs={12} sm={7} md={6}>
               <Autocomplete
@@ -83,33 +89,14 @@ export default function Search() {
                 onClose={() => {
                   setOpen(false);
                 }}
-                getOptionSelected={(option, value) => {
-                  let url = '';
-                  switch (option.media_type) {
-                    case 'person':
-                      url = `/details/person/${option.id}`;
-                      break;
-                    case 'movie':
-                      url = `/details/movie/${option.id}`;
-                      break;
-                    case 'tv':
-                      url = `/details/tv/${option.id}`;
-                      break;
-                    default:
-                      url = '/noMatch'
-                      break;
-                  }
-                  window.location.href = url;
-                  return option.id === value.id
-                }}
-                getOptionLabel={(option) => {
-                  const res = option.media_type === 'movie' ? option.title : option.name;
-                  return res;
-                }}
+                renderOption={(option) => (<Link className={classes.optionsLink} href={`/details/${option.media_type}/${option.id}`}>{option.title || option.name}</Link>)}
+                getOptionSelected={(option, value) => option.id === value.id}
+                getOptionLabel={(option) => (option.media_type === 'movie' ? option.title : option.name)}
                 options={options}
                 loading={loading}
                 renderInput={(params) => (
                   <TextField
+                    // eslint-disable-next-line react/jsx-props-no-spreading
                     {...params}
                     required
                     label="Search for a movie, tv show or a person"

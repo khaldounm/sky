@@ -1,4 +1,4 @@
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
 export const drawerWidth = 240;
 
@@ -59,5 +59,9 @@ export const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+  },
+  logo: {
+    width: 55,
+    height: 55,
   },
 }));
