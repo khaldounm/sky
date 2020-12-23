@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from './components/layout';
-import CircularIndeterminate from './components/spinner';
+import Spinner from './components/spinner';
 import Search from './components/search';
 
 class App extends React.Component {
@@ -16,7 +16,7 @@ class App extends React.Component {
     if (!isLoaded) {
       return (
         <Layout>
-          <CircularIndeterminate />
+          <Spinner />
         </Layout>
       );
     }

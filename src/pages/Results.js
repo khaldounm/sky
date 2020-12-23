@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/layout';
 import ResultsBody from '../components/resultsBody';
-import CircularIndeterminate from '../components/spinner';
+import Spinner from '../components/spinner';
 import api from '../utils';
 
 class Results extends React.Component {
@@ -33,7 +33,7 @@ class Results extends React.Component {
     if (!isLoaded) {
       return (
         <Layout>
-          <CircularIndeterminate />
+          <Spinner />
         </Layout>
       );
     }
