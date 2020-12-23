@@ -74,6 +74,6 @@ export const useStyles = makeStyles((theme) => ({
     paddingBottom: theme.spacing(1),
     textDecoration: 'none !important ',
     width: '100%',
-    color: theme.palette.secondary[currentTheme],
+    color: theme.palette.secondary.contrastText,
   },
 }));

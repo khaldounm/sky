@@ -14,7 +14,7 @@ export default function ResultsBody({ data, type }) {
       <Container maxWidth="lg" className={classes.marginBottom}>
         <Grid container spacing={4}>
           <Grid item xs={12}>
-            <Typography className={classes.serviceTitle}>Search Results</Typography>
+            <Typography className={classes.serviceTitle}>{data.items.length > 0 ? 'Search Results' : 'No results returned' }</Typography>
           </Grid>
           {data.items.map((result) => (
             <Grid item xs={12} className={classes.marginTopSM} key={result.id}>
