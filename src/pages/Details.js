@@ -17,6 +17,8 @@ class Details extends React.Component {
 
   componentDidMount() {
     const paths = window.location.pathname.split('/');
+    // eslint-disable-next-line no-console
+    console.log({ itemType: paths[2], itemId: paths[3] });
     api.getDetails({ itemType: paths[2], itemId: paths[3] })
       .then((data) => {
         this.setState({

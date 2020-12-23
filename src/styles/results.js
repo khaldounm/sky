@@ -111,7 +111,7 @@ export const useStyles = makeStyles((theme) => ({
     verticalAlign: 'middle',
   },
   leftPaneGreyText: {
-    fontSize: '0.9em',
+    fontSize: '1em',
   },
   media: {
     height: 300,
@@ -131,6 +131,19 @@ export const useStyles = makeStyles((theme) => ({
   posterImg: {
     width: '100%',
     borderRadius: 5,
+    padding: 0,
+    margin: 0,
+    lineHeight: '0',
+    position: 'relative',
+  },
+  floatingProgress: {
+    position: 'absolute',
+    top: 'calc(100% - 60px)',
+    left: 'calc(50% - 20px)',
+    zIndex: 10,
+    [theme.breakpoints.down('md')]: {
+      top: 'calc(100% - 40px)',
+    },
   },
   paperButton: {
     borderRadius: 100,
