@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+# Sky Go bootstrapped with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  
+
+Click for more info about [Create React App](https://github.com/facebook/create-react-app).
+
+  
 
 ## Available Scripts
 
+  
+
 In the project directory, you can run:
+
+  
 
 ### `yarn start`
 
-Runs the app in the development mode.\
+  
+
+Runs the app in the development mode.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
+  
+
+The page will reload if you make edits.
+
 You will also see any lint errors in the console.
+
+  
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  
+
+Launches the dummy test runner in the interactive watch mode.
+
+  
 
 ### `yarn build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Builds the app for production to the `build` folder.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+It correctly bundles React in production mode and optimises the build for the best performance.
+
+  
+
+The build is minified and the filenames include the hashes.
+
+The app is ready to be deployed!
+
+  
+
+### `yarn serve`
+
+  
+
+to serve the app from the built bundle
+
+  
+
+### `yarn audit:local`
+
+  
+
+to audit the app from the built bundle - best to audit the app from the served bundle 'yarn build && yarn serve' and not while in dev mode 'yarn start'
+
+  
 
 ### `yarn eject`
 
+  
+
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+  
 
 If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  
+## App Feature
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ The app has 
+ - a home page where you will be greeted with a header including a
+	 - menu where you can find useful shortcuts
+		 - Sky logo
+		 - theme toggle (dark and light)
+		 - search icon in order to toggle the mini-search component available on all pages
+	- advanced search component
+	- simple footer
+ - a results page where you will be greeted with the search results
+ - details page where you can see details about a movie/tv show or a person
+	 - details page has a related component where you can see the cast of a given movie/tv show or available movies/tv shows for a giving person
 
-## Learn More
+The app has predictive search feature on both search components, the mini search component has no filter next to the input field as it would hide parts of the search string on old narrow mobile devices.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The app is mobile and tablet friendly.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app uses material UI for theming and styling.
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Notes
+- the app has class and functional components, more precisely the pages are class components and the reusable components are functional components as I totally understand that some react apps - especially older ones - are using class components and the market is shifting towards functional ones, I followed both approaches in order to prove that I can do both. 
+- the app is compatible with node 10 and higher
+- I opted for local state on each component because the app is a basic and simple one, the components didn't need to share the state and therefore there was no need for a **global state store** like **Redux or MobEx** nor **React Context**
