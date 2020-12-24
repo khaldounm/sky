@@ -23,13 +23,16 @@ class Results extends React.Component {
         this.setState({
           items: data.results,
           type: searchType,
+          search: decodeURI(searchQuery),
           isLoaded: true,
         });
       });
   }
 
   render() {
-    const { isLoaded, items, type } = this.state;
+    const {
+      isLoaded, items, type, search,
+    } = this.state;
     if (!isLoaded) {
       return (
         <Layout>
@@ -39,7 +42,7 @@ class Results extends React.Component {
     }
     return (
       <Layout>
-        <ResultsBody data={{ items }} type={type} />
+        <ResultsBody data={{ items }} type={type} search={search} />
       </Layout>
     );
   }
