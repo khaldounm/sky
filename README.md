@@ -101,8 +101,10 @@ The app is mobile and tablet friendly.
 
 The app uses material UI for theming and styling.
 
+The app has a dockerfile and a dickerignore files to build and containerise it.
+
 
 ## Notes
 - the app has class and functional components, more precisely the pages are class components and the reusable components are functional components as I totally understand that some react apps - especially older ones - are using class components and the market is shifting towards functional ones, I followed both approaches in order to prove that I can do both. 
 - the app is compatible with node 10 and higher
-- I opted for local state on each component because the app is a basic and simple one, the components didn't need to share the state and therefore there was no need for a **global state store** like **Redux or MobEx** nor **React Context**
+- I opted for local state on each component because the app is a basic and simple one, the components didn't need to share the state and therefore there was no need for a **global state store** like **Redux or MobX** nor **React Context**
