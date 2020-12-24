@@ -100,7 +100,7 @@ export default function MiniSearch() {
                   ),
                   endAdornment: (
                     <>
-                      {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                      {loading ? <CircularProgress size={20} className={classes.miniSpinnerOverride} /> : null}
                       {params.InputProps.endAdornment}
                     </>
                   ),

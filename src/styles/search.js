@@ -20,8 +20,9 @@ export const useStyles = makeStyles((theme) => ({
     verticalAlign: 'middle',
     borderBottom: currentTheme === 'light' ? '1px solid rgba(0, 0, 0, 0.42)' : '1px solid rgba(255, 255, 255, 0.7)',
   },
-  inputOverride: {
-    minHeight: '100px !important',
+  miniSpinnerOverride: {
+    position: 'absolute',
+    right: 10,
   },
   button: {
     textTransform: 'none',
