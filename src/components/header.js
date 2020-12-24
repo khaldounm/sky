@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import clsx from 'clsx';
+import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -10,15 +12,18 @@ import InfoIcon from '@material-ui/icons/Info';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import SearchIcon from '@material-ui/icons/Search';
 import {
-  useTheme, Drawer, CssBaseline, AppBar, Toolbar, List, Link, Divider, IconButton, ListItem, ListItemIcon, ListItemText, Badge,
+  useTheme, Drawer, CssBaseline, AppBar, Toolbar, List, Link, Divider, IconButton, ListItem, ListItemIcon, ListItemText, Badge, Box,
 } from '@material-ui/core';
+import MiniSearch from './miniSearch';
 import { useStyles } from '../styles/drawer';
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [show, setShow] = React.useState('none');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -26,6 +31,10 @@ export default function PersistentDrawerLeft() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleSearchToggle = () => {
+    setShow(show === 'none' ? 'block' : 'none');
   };
 
   const handleThemeSwitcher = () => {
@@ -57,6 +66,8 @@ export default function PersistentDrawerLeft() {
     return dynamicTheme === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />;
   };
 
+  const activeSearch = () => (show === 'none' ? <SearchIcon /> : <CloseIcon />);
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -77,14 +88,24 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Link href="/"><img src="/logo.png" className={classes.logo} alt="logo" /></Link>
-          <section className={classes.rightToolbar}>
+          <section className={`${classes.rightToolbar} ${classes.marginRight}`}>
             <IconButton color="inherit" edge="end" onClick={handleThemeSwitcher} aria-label="theme-toggle">
               <Badge>
                 {activeTheme()}
               </Badge>
             </IconButton>
           </section>
+          <section>
+            <IconButton color="inherit" edge="end" onClick={handleSearchToggle} aria-label="search-toggle">
+              <Badge>
+                {activeSearch()}
+              </Badge>
+            </IconButton>
+          </section>
         </Toolbar>
+        <Box component="div" display={show} className={classes.miniSearchBox}>
+          <MiniSearch />
+        </Box>
       </AppBar>
       <Drawer
         className={classes.drawer}

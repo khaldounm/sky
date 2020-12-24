@@ -30,6 +30,16 @@ export const useStyles = makeStyles((theme) => ({
   hide: {
     display: 'none',
   },
+  miniSearchBox: {
+    position: 'absolute',
+    top: 64,
+    left: 0,
+    width: '100%',
+    backgroundColor: theme.palette.background.default,
+  },
+  marginRight: {
+    marginRight: theme.spacing(2),
+  },
   drawer: {
     width: drawerWidth,
     flexShrink: 0,

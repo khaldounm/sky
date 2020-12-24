@@ -1,12 +1,9 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React from 'react';
 import {
-  Container, CssBaseline, Typography, Hidden, FormControl, InputLabel, Select, MenuItem, CircularProgress, Link,
+  Container, CssBaseline, Typography, Hidden, FormControl, InputLabel, Select, MenuItem, CircularProgress, Link, Button, TextField, Grid,
 } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStyles } from '../styles/search';
 import api from '../utils';
@@ -21,6 +18,7 @@ export default function Search() {
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
+  const loadingText = 'Type more than 5 characters to start...';
 
   const handleChange = async (event) => {
     const { name } = event.target;
@@ -94,6 +92,7 @@ export default function Search() {
                 getOptionLabel={(option) => (option.media_type === 'movie' ? option.title : option.name)}
                 options={options}
                 loading={loading}
+                loadingText={loadingText}
                 renderInput={(params) => (
                   <TextField
                     // eslint-disable-next-line react/jsx-props-no-spreading

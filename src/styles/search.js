@@ -12,6 +12,16 @@ export const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(8),
     },
   },
+  miniRoot: {
+    height: 57,
+    width: '100%',
+    padding: theme.spacing(0),
+    margin: theme.spacing(0),
+    lineHeight: 3,
+  },
+  inputOverride: {
+    borderRadius: '0 !important',
+  },
   button: {
     textTransform: 'none',
     fontWeight: 700,
@@ -26,9 +36,6 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     padding: theme.spacing(1),
     cursor: 'pointer',
-    '&:hover': {
-
-    },
   },
   searchEngineTitle: {
     fontWeight: 500,
