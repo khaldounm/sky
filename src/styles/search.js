@@ -17,10 +17,11 @@ export const useStyles = makeStyles((theme) => ({
     width: '100%',
     padding: theme.spacing(0),
     margin: theme.spacing(0),
-    lineHeight: 3,
+    verticalAlign: 'middle',
+    borderBottom: currentTheme === 'light' ? '1px solid rgba(0, 0, 0, 0.42)' : '1px solid rgba(255, 255, 255, 0.7)',
   },
   inputOverride: {
-    borderRadius: '0 !important',
+    minHeight: '100px !important',
   },
   button: {
     textTransform: 'none',
@@ -45,6 +46,19 @@ export const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       fontSize: '2.2em',
     },
+  },
+  optionsLink: {
+    fontWeight: 500,
+    fontSize: '1em',
+    lineHeight: '1.2em',
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
+    textDecoration: 'none !important ',
+    width: '100%',
+    color: theme.palette.secondary.contrastText,
+  },
+  optionsPosition: {
+    top: '10px',
   },
   searchEngineSubTitle: {
     fontWeight: 500,
@@ -72,15 +86,5 @@ export const useStyles = makeStyles((theme) => ({
     '&:hover': {
       textDecoration: 'underline',
     },
-  },
-  optionsLink: {
-    fontWeight: 500,
-    fontSize: '1em',
-    lineHeight: '1.2em',
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-    textDecoration: 'none !important ',
-    width: '100%',
-    color: theme.palette.secondary.contrastText,
   },
 }));

@@ -3,7 +3,7 @@ import {
   Container, Typography, Card, CardActionArea, CardActions, CardContent, CardMedia, Button, Grid,
 } from '@material-ui/core';
 import { useStyles } from '../styles/results';
-import api from '../utils';
+import api from '../services';
 
 export default function Related(data) {
   const { details, type } = data;

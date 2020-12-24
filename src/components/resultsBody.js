@@ -4,7 +4,7 @@ import {
   Container, Grid, Typography, Chip, Button, Divider,
 } from '@material-ui/core';
 import { useStyles } from '../styles/results';
-import api from '../utils';
+import api from '../services';
 
 export default function ResultsBody({ data, type }) {
   const classes = useStyles();

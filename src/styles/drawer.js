@@ -36,6 +36,9 @@ export const useStyles = makeStyles((theme) => ({
     left: 0,
     width: '100%',
     backgroundColor: theme.palette.background.default,
+    [theme.breakpoints.down('sm')]: {
+      top: 60,
+    },
   },
   marginRight: {
     marginRight: theme.spacing(2),

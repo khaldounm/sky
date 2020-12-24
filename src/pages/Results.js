@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import ResultsBody from '../components/resultsBody';
 import Spinner from '../components/spinner';
-import api from '../utils';
+import api from '../services';
 
 class Results extends React.Component {
   constructor(props) {

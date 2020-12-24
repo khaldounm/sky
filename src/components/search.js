@@ -6,7 +6,7 @@ import {
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import SearchIcon from '@material-ui/icons/Search';
 import { useStyles } from '../styles/search';
-import api from '../utils';
+import api from '../services';
 
 export default function Search() {
   const classes = useStyles();
@@ -50,12 +50,6 @@ export default function Search() {
         active = false;
       };
     }
-  };
-
-  // eslint-disable-next-line no-unused-vars
-  const redirect = (url) => {
-    // eslint-disable-next-line no-console
-    console.log(window.location.href, url);
   };
 
   React.useEffect(() => {

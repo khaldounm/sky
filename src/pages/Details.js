@@ -3,7 +3,7 @@ import Layout from '../components/layout';
 import DetailsBody from '../components/detailsBody';
 import Related from '../components/related';
 import Spinner from '../components/spinner';
-import api from '../utils';
+import api from '../services';
 
 class Details extends React.Component {
   constructor(props) {
@@ -17,8 +17,6 @@ class Details extends React.Component {
 
   componentDidMount() {
     const paths = window.location.pathname.split('/');
-    // eslint-disable-next-line no-console
-    console.log({ itemType: paths[2], itemId: paths[3] });
     api.getDetails({ itemType: paths[2], itemId: paths[3] })
       .then((data) => {
         this.setState({

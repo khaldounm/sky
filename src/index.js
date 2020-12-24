@@ -23,6 +23,27 @@ const theme = createMuiTheme({
     contrastThreshold: 3,
     tonalOffset: 0.2,
   },
+  overrides: {
+    MuiFilledInput: {
+      root: {
+        backgroundColor: 'transparent',
+        'border-top-left-radius': 0,
+        'border-top-right-radius': 0,
+        '&:hover': {
+          backgroundColor: 'transparent',
+          '@media (hover: none)': {
+            backgroundColor: 'transparent',
+          },
+        },
+        '&$focused': {
+          backgroundColor: 'transparent',
+          '@media (hover: none)': {
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    },
+  },
   breakpoints: {
     values: {
       xs: 0,

@@ -4,7 +4,7 @@ import {
   Container, Grid, Typography, Box, CircularProgress, Divider, Paper,
 } from '@material-ui/core';
 import { useStyles } from '../styles/results';
-import api from '../utils';
+import api from '../services';
 
 export default function DetailsBody(data) {
   const classes = useStyles();
