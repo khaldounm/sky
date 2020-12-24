@@ -3,6 +3,10 @@ import NoMatchComponent from '../components/noMatch';
 import Layout from '../components/layout';
 
 class NoMatch extends React.Component {
+  componentDidMount() {
+    document.title = 'Page not found';
+  }
+
   render() {
     return (
       <Layout>

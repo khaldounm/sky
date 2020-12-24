@@ -19,12 +19,14 @@ class Details extends React.Component {
     const paths = window.location.pathname.split('/');
     api.getDetails({ itemType: paths[2], itemId: paths[3] })
       .then((data) => {
+        document.title = data.title || data.name;
         this.setState({
           items: data,
           type: paths[2],
           isLoaded: true,
         });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         throw new Error(err);
       });
   }

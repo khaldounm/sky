@@ -17,13 +17,15 @@ class Results extends React.Component {
     const { search } = window.location;
     const query = new URLSearchParams(search);
     const searchQuery = query.get('search');
+    const searchQueryEncoded = decodeURI(searchQuery);
     const searchType = query.get('type');
+    document.title = `Search results for ${searchQueryEncoded}`;
     api.search(searchType, searchQuery)
       .then((data) => {
         this.setState({
           items: data.results,
           type: searchType,
-          search: decodeURI(searchQuery),
+          search: searchQueryEncoded,
           isLoaded: true,
         });
       });
