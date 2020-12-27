@@ -32,13 +32,30 @@ export const useStyles = makeStyles((theme) => ({
   },
   miniSearchBox: {
     position: 'absolute',
-    top: 64,
     left: 0,
     width: '100%',
     backgroundColor: theme.palette.background.default,
     [theme.breakpoints.down('sm')]: {
       top: 60,
     },
+  },
+  showMiniSearchBox: {
+    zIndex: 1,
+    opacity: 1,
+    top: 64,
+    transition: theme.transitions.create(['opacity', 'top'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  hideMiniSearchBox: {
+    zIndex: -1,
+    opacity: 0,
+    top: 0,
+    transition: theme.transitions.create(['opacity', 'top'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   marginRight: {
     marginRight: theme.spacing(2),

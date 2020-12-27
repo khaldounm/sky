@@ -23,7 +23,7 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [show, setShow] = React.useState('none');
+  const [show, setShow] = React.useState('hideMiniSearchBox');
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -34,7 +34,7 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleSearchToggle = () => {
-    setShow(show === 'none' ? 'block' : 'none');
+    setShow(show === 'hideMiniSearchBox' ? 'showMiniSearchBox' : 'hideMiniSearchBox');
   };
 
   const handleThemeSwitcher = () => {
@@ -66,7 +66,7 @@ export default function PersistentDrawerLeft() {
     return dynamicTheme === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />;
   };
 
-  const activeSearch = () => (show === 'none' ? <SearchIcon /> : <CloseIcon />);
+  const activeSearch = () => (show === 'hideMiniSearchBox' ? <SearchIcon /> : <CloseIcon />);
 
   return (
     <div className={classes.root}>
@@ -103,8 +103,8 @@ export default function PersistentDrawerLeft() {
             </IconButton>
           </section>
         </Toolbar>
-        <Box component="div" display={show} className={classes.miniSearchBox}>
-          <MiniSearch />
+        <Box component="div" className={`${classes.miniSearchBox} ${classes[show]}`}>
+          <MiniSearch status={show} />
         </Box>
       </AppBar>
       <Drawer

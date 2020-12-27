@@ -8,14 +8,13 @@ import SearchIcon from '@material-ui/icons/Search';
 import { useStyles } from '../styles/search';
 import api from '../services';
 
-export default function MiniSearch() {
+export default function MiniSearch(show) {
+  const { status } = show;
+
   const classes = useStyles();
 
-  const [state, setState] = React.useState({
-    type: 'multi',
-    search: '',
-  });
-
+  const [state, setState] = React.useState({ type: 'multi', search: '' });
+  const [autoFocus, setAutoFocus] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   const loading = open && options.length === 0;
@@ -46,15 +45,25 @@ export default function MiniSearch() {
   };
 
   React.useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
     if (!open) {
       setOptions([]);
     }
   }, [open]);
 
+  // eslint-disable-next-line no-unused-expressions
+  React.useEffect(() => { status === 'hideMiniSearchBox' ? setAutoFocus(false) : setAutoFocus(true); }, [status]);
+
+  const focusElement = (element) => {
+    if (autoFocus && element) {
+      element.focus();
+    }
+  };
+
   return (
     <div className={classes.miniRoot}>
       <Container maxWidth="lg">
-        <form noValidate action="/results">
+        <form action="/results">
           <input type="hidden" value="multi" name="type" />
           <Autocomplete
             clearOnEscape
@@ -81,11 +90,11 @@ export default function MiniSearch() {
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...params}
                 required
-                autoFocus
                 onChange={handleQueryChange}
                 id="mini-search-input"
                 placeholder="Search..."
                 fullWidth
+                inputRef={(input) => focusElement(input)}
                 InputProps={{
                   ...params.InputProps,
                   style: {
