@@ -17,7 +17,7 @@ import {
   useTheme, Drawer, CssBaseline, AppBar, Toolbar, List, Link, Divider, IconButton, ListItem, ListItemIcon, ListItemText, Badge, Box,
 } from '@material-ui/core';
 import MiniSearch from './miniSearch';
-import { useStyles } from '../styles/drawer';
+import { useStyles } from '../styles/header';
 
 export default function PersistentDrawerLeft() {
   const classes = useStyles();
