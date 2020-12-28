@@ -24,9 +24,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false --coverage",
     "eject": "react-scripts eject",
-    "audit:local": "lighthouse http://localhost:3000/ -GA --view",
+    "lint": "eslint src/**/*.js",
     "serve": "serve -s build -l 3000",
-    "lint": "eslint src/**/*.js"
+    "serve:dev": "pm2 start yarn -- serve",
+    "audit:local": "lighthouse http://localhost:3000/ -GA --view",
+    "audit:dev": "lighthouse http://34.89.30.180/ -GA --view"
   },
   "eslintConfig": {
     "extends": [
