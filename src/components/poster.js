@@ -17,7 +17,7 @@ export default function Poster(data) {
   imgObjArray.forEach((item) => imgArray.push(item.file_path));
 
   const [progress, setProgress] = React.useState(0);
-  const [buttonDisabled] = React.useState(!(imgArray.length > 0));
+  const [buttonDisabled] = React.useState(!(imgArray.length > 1));
   const [bg, setBg] = React.useState(details.profile_path || details.poster_path || 'https://straffordchiropractic.com/wp-content/uploads/2017/04/poster-placeholder.png');
   const [loaderState, setLoaderState] = React.useState('show');
 
