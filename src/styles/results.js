@@ -130,6 +130,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   posterImg: {
     width: '100%',
+    minHeight: 235,
     borderRadius: 5,
     padding: 0,
     margin: 0,
@@ -145,7 +146,47 @@ export const useStyles = makeStyles((theme) => ({
       top: 'calc(100% - 40px)',
     },
   },
+  navButton: {
+    backgroundColor: '#000000',
+    color: 'orange',
+    position: 'absolute',
+    top: '50%',
+    zIndex: 10,
+    opacity: 0.7,
+    '&:hover': {
+      backgroundColor: '#000000',
+      color: 'orange',
+      opacity: 1,
+    },
+    [theme.breakpoints.down('md')]: {
+      top: 'calc(50% - 20px)',
+    },
+    transition: theme.transitions.create(['backgroundColor', 'color', 'opacity'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  previous: {
+    left: 0,
+  },
+  next: {
+    right: 0,
+  },
   paperButton: {
     borderRadius: 100,
+  },
+  loader: {
+    position: 'absolute',
+    width: '200px',
+    height: '200px',
+    top: '50%',
+    left: '50%',
+    margin: '-15px 0 0 -20px',
+  },
+  show: {
+    display: 'block',
+  },
+  hide: {
+    display: 'none',
   },
 }));

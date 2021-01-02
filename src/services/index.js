@@ -19,6 +19,23 @@ class Api {
       });
   }
 
+  getPosters({ itemType, itemId }) {
+    if (!itemType || !itemId) {
+      throw new Error('"id" is a required property');
+    }
+    const itemTypeAmendment = {
+      person: '',
+      tv: '&language=en-US',
+      movie: '&language=en-US&include_image_language=en',
+    };
+    return axios
+      .get(`${this.url}/${itemType}/${itemId}/images?${this.apiKey}${itemTypeAmendment[itemType]}`)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw new Error(error);
+      });
+  }
+
   search(searchType, searchQuery) {
     const encodedSearchQuery = encodeURI(searchQuery);
     return axios
