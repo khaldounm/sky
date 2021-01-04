@@ -42,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
   showMiniSearchBox: {
     zIndex: 1,
     opacity: 1,
-    top: 64,
+    top: 60,
     transition: theme.transitions.create(['opacity', 'top'], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,

@@ -36,6 +36,21 @@ class Api {
       });
   }
 
+  getVideos({ itemType, itemId }) {
+    if (!itemType || !itemId) {
+      throw new Error('"id" is a required property');
+    }
+    if (itemType === 'person') {
+      return { results: [] };
+    }
+    return axios
+      .get(`${this.url}/${itemType}/${itemId}/videos?${this.apiKey}&language=en-US`)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw new Error(error);
+      });
+  }
+
   search(searchType, searchQuery) {
     const encodedSearchQuery = encodeURI(searchQuery);
     return axios

@@ -1,16 +1,30 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import {
-  Container, Grid, Typography, Divider, Paper,
+  Container, Grid, Typography, Divider, Button, Modal, Backdrop, Fade,
 } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import Poster from './poster';
 import { useStyles } from '../styles/results';
 
 export default function DetailsBody(data) {
   const classes = useStyles();
-  const { details, type, posters } = data;
+
+  const {
+    details, type, posters, trailers,
+  } = data;
 
   const currencyFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={classes.root}>
@@ -45,7 +59,7 @@ export default function DetailsBody(data) {
                 <Typography className={`${classes.leftPaneGreyText}`} component="span">
                   {(details.overview || details.biography || '-').split('\n').map((i) => <Typography key={Math.random()} paragraph className={`${classes.leftPaneGreyText}`} variant="body1">{i}</Typography>)}
                 </Typography>
-                {type !== 'person' ? (
+                {type !== 'person' && trailers.length > 0 ? (
                   <>
                     <Typography className={`${classes.bold} ${classes.marginTopMD} ${classes.serviceSubTitle}`}>Status</Typography>
                     <Typography className={`${classes.leftPaneGreyText}`}>{details.status || '-'}</Typography>
@@ -55,6 +69,7 @@ export default function DetailsBody(data) {
                     </Typography>
                     <Typography className={`${classes.bold} ${classes.marginTopMD} ${classes.serviceSubTitle}`}>Produced by</Typography>
                     <Typography className={`${classes.leftPaneGreyText}`}>{details.production_companies.map((elem) => elem.name).join(', ') || '-'}</Typography>
+                    <Typography className={`${classes.bold} ${classes.marginTopMD} ${classes.serviceSubTitle}`}><Button className={classes.redOrange} onClick={handleOpen}>View trailer</Button></Typography>
                   </>
                 ) : ''}
               </Grid>
@@ -63,6 +78,27 @@ export default function DetailsBody(data) {
           </Grid>
         </Grid>
       </Container>
+      {type !== 'person' && trailers.length > 0 ? (
+        <Modal
+          aria-labelledby="Trailer"
+          aria-describedby="Trailer-Description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 250,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <div className={classes.close}><CloseIcon onClick={handleClose} /></div>
+              <iframe className={classes.iframe} title="trailer" src={`https://www.youtube.com/embed/${trailers[0].key}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+            </div>
+          </Fade>
+        </Modal>
+      ) : ''}
     </div>
   );
 }

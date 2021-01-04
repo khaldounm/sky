@@ -11,6 +11,7 @@ class Details extends React.Component {
     this.state = {
       items: [],
       images: [],
+      videos: [],
       isLoaded: false,
       type: '',
     };
@@ -20,11 +21,13 @@ class Details extends React.Component {
     const paths = window.location.pathname.split('/');
     const details = api.getDetails({ itemType: paths[2], itemId: paths[3] });
     const images = api.getPosters({ itemType: paths[2], itemId: paths[3] });
-    Promise.all([details, images]).then((values) => {
+    const videos = api.getVideos({ itemType: paths[2], itemId: paths[3] });
+    Promise.all([details, images, videos]).then((values) => {
       document.title = values[0].title || values[0].name;
       this.setState({
         items: values[0],
         images: values[1],
+        videos: values[2].results,
         type: paths[2],
         isLoaded: true,
       });
@@ -35,7 +38,7 @@ class Details extends React.Component {
 
   render() {
     const {
-      isLoaded, items, images, type,
+      isLoaded, items, images, videos, type,
     } = this.state;
     if (!isLoaded) {
       return (
@@ -46,7 +49,7 @@ class Details extends React.Component {
     }
     return (
       <Layout>
-        <DetailsBody details={items} type={type} posters={images} />
+        <DetailsBody details={items} type={type} posters={images} trailers={videos} />
         <Related details={items} type={type} />
       </Layout>
     );
