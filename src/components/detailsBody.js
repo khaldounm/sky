@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import {
-  Container, Grid, Typography, Divider, Button, Modal, Backdrop, Fade,
+  Container, Grid, Typography, Divider, Button,
 } from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
 import Poster from './poster';
+import TrailerModal from './modal';
 import { useStyles } from '../styles/results';
 
 export default function DetailsBody(data) {
@@ -16,14 +16,14 @@ export default function DetailsBody(data) {
 
   const currencyFormat = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
-  const [open, setOpen] = React.useState(false);
+  const [modalOpen, setOpen] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleChange = (openState) => {
+    setOpen(openState);
   };
 
   return (
@@ -79,25 +79,7 @@ export default function DetailsBody(data) {
         </Grid>
       </Container>
       {type !== 'person' && trailers.length > 0 ? (
-        <Modal
-          aria-labelledby="Trailer"
-          aria-describedby="Trailer-Description"
-          className={classes.modal}
-          open={open}
-          onClose={handleClose}
-          closeAfterTransition
-          BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 250,
-          }}
-        >
-          <Fade in={open}>
-            <div className={classes.paper}>
-              <div className={classes.close}><CloseIcon onClick={handleClose} /></div>
-              <iframe className={classes.iframe} title="trailer" src={`https://www.youtube.com/embed/${trailers[0].key}`} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-            </div>
-          </Fade>
-        </Modal>
+        <TrailerModal openState={modalOpen} ytbKey={trailers[0].key} onChange={handleChange} />
       ) : ''}
     </div>
   );
