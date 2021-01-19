@@ -1,5 +1,3 @@
-# Live demo
-Click for live app on [Google Cloud Platform](http://34.89.30.180/).
 ## Available Scripts
 In the project directory, you can run:
 
